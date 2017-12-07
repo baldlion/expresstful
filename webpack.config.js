@@ -1,13 +1,15 @@
 const webpack = require('webpack')
 const path = require('path')
-
+const nodeExternals = require('webpack-node-externals')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
+  target: 'node',
+  externals: [nodeExternals()],
   entry: './src/index',
 
   output: {
-    filename: '[name].bundle.js',
+    filename: 'expresstful.bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
 

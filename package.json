@@ -1,9 +1,13 @@
 {
   "name": "expresstful",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Express RESTful API Framework",
-  "main": "src/index.js",
+  "main": "dist/expresstful.bundle.js",
   "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "webpack",
+    "prestart": "npm run clean",
     "start": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,5 +28,8 @@
     "express": "^4.16.2",
     "uglifyjs-webpack-plugin": "^1.1.2",
     "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "webpack-node-externals": "^1.6.0"
   }
 }
