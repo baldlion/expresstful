@@ -1,10 +1,10 @@
 {
   "name": "expresstful",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Express RESTful API Framework",
-  "main": "dist/expresstful.bundle.js",
+  "main": "lib/expresstful.js",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf lib",
     "prebuild": "npm run clean",
     "build": "webpack",
     "prestart": "npm run clean",

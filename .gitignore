@@ -63,4 +63,4 @@ typings/
 # OS Files
 .DS_Store
 
-dist/
+lib/

@@ -9,8 +9,11 @@ module.exports = {
   entry: './src/index',
 
   output: {
-    filename: 'expresstful.bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: 'expresstful.js',
+    path: path.resolve(__dirname, 'lib'),
+    library: 'expresstful',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
 
   module: {
