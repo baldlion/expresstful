@@ -1,6 +1,6 @@
 import express from 'express'
 import morgan from 'morgan'
-import { expresstful } from 'expresstful'
+import expresstful from 'expresstful'
 import { Posts } from './posts'
 import { Users } from './users'
 

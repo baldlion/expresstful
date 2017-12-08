@@ -68,7 +68,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__expresstful__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__expresstful__ = __webpack_require__(5);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__expresstful__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__decorators__ = __webpack_require__(6);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__decorators__["a"]; });
@@ -116,7 +116,7 @@ const port = 4000;
 
 app.use(__WEBPACK_IMPORTED_MODULE_1_morgan___default()('dev'));
 
-app.use(Object(__WEBPACK_IMPORTED_MODULE_2_expresstful__["b" /* expresstful */])([__WEBPACK_IMPORTED_MODULE_4__users__["a" /* Users */], __WEBPACK_IMPORTED_MODULE_3__posts__["a" /* Posts */]]));
+app.use(Object(__WEBPACK_IMPORTED_MODULE_2_expresstful__["b" /* default */])([__WEBPACK_IMPORTED_MODULE_4__users__["a" /* Users */], __WEBPACK_IMPORTED_MODULE_3__posts__["a" /* Posts */]]));
 
 app.listen(port, () => {
   console.log(`demo app listening on port ${port}`);
@@ -129,7 +129,30 @@ app.listen(port, () => {
 module.exports = require("morgan");
 
 /***/ }),
-/* 5 */,
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = expresstful;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+
+
+function expresstful(controllers) {
+  const router = new __WEBPACK_IMPORTED_MODULE_0_express__["Router"]();
+
+  controllers.forEach(Controller => {
+    const instance = new Controller();
+
+    for (const { method, path, middleware, routeFn } of instance.$routes) {
+      router[method](path, ...middleware, instance[routeFn].bind(instance));
+    }
+  });
+
+  return router;
+}
+
+/***/ }),
 /* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -344,30 +367,6 @@ let Users = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_expresstful__["a" /* cont
     }]);
   }
 }, (_applyDecoratedDescriptor(_class2.prototype, 'root', [_dec2], __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_get_own_property_descriptor___default()(_class2.prototype, 'root'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'all', [_dec3], __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_get_own_property_descriptor___default()(_class2.prototype, 'all'), _class2.prototype)), _class2)) || _class);
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = expresstful;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-
-
-function expresstful(controllers) {
-  const router = new __WEBPACK_IMPORTED_MODULE_0_express__["Router"]();
-
-  controllers.forEach(Controller => {
-    const instance = new Controller();
-
-    for (const { method, path, middleware, routeFn } of instance.$routes) {
-      router[method](path, ...middleware, instance[routeFn].bind(instance));
-    }
-  });
-
-  return router;
-}
 
 /***/ })
 /******/ ]);
