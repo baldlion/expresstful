@@ -5,13 +5,13 @@ function expresstful (controllers) {
   const router = new Router()
 
   if (controllers) {
-    controllers.forEach(Controller => {
+    for (let [name, Controller] of Object.entries(controllers)) {
       const instance = new Controller()
 
       for (const {method, path, middleware, routeFn} of instance.$routes) {
         router[method](path, ...middleware, instance[routeFn].bind(instance))
       }
-    })
+    }
   }
 
   return router
