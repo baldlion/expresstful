@@ -1,12 +1,12 @@
 import { Router } from 'express'
-import { controller, all, del, get, post, put } from './decorators'
+import { resource, all, del, get, post, put } from './decorators'
 
-function expresstful (controllers) {
+function expresstful (resources) {
   const router = new Router()
 
-  if (controllers) {
-    for (let [name, Controller] of Object.entries(controllers)) {
-      const instance = new Controller()
+  if (resources) {
+    for (let [name, Resource] of Object.entries(resources)) {
+      const instance = new Resource()
 
       for (const {method, path, middleware, routeFn} of instance.$routes) {
         router[method](path, ...middleware, instance[routeFn].bind(instance))
@@ -19,7 +19,7 @@ function expresstful (controllers) {
 
 export default expresstful
 export {
-  controller,
+  resource,
   all,
   del,
   get,

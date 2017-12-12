@@ -1,6 +1,6 @@
 export const PREFIX = '$$route_'
 
-export function controller (ctrlPath, ...ctrlMiddleware) {
+export function resource (ctrlPath, ...ctrlMiddleware) {
   return function (target, key, descriptor) {
     const proto = target.prototype
     proto.$routes = Object.getOwnPropertyNames(proto)
