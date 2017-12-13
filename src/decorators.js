@@ -1,6 +1,16 @@
-export const PREFIX = '$$route_'
+const PREFIX = '$$route_'
 
-export function resource (ctrlPath, ...ctrlMiddleware) {
+function route (method, path, ...middleware) {
+  return function (target, name) {
+    target[`${PREFIX}${name}`] = {
+      method: method,
+      path: path,
+      middleware: middleware
+    }
+  }
+}
+
+export function Controller (ctrlPath, ...ctrlMiddleware) {
   return function (target, key, descriptor) {
     const proto = target.prototype
     proto.$routes = Object.getOwnPropertyNames(proto)
@@ -22,32 +32,26 @@ export function resource (ctrlPath, ...ctrlMiddleware) {
   }
 }
 
-export function route (method, path, ...middleware) {
-  return function (target, name) {
-    target[`${PREFIX}${name}`] = {
-      method: method,
-      path: path,
-      middleware: middleware
-    }
-  }
-}
-
-export function all (path, ...middlewares) {
+export function All (path, ...middlewares) {
   return route('all', path, middlewares)
 }
 
-export function del (path, ...middlewares) {
+export function Del (path, ...middlewares) {
   return route('delete', path, middlewares)
 }
 
-export function get (path, ...middlewares) {
+export function Get (path, ...middlewares) {
   return route('get', path, middlewares)
 }
 
-export function post (path, ...middlewares) {
+export function Patch (path, ...middlewares) {
+  return route('patch', path, middlewares)
+}
+
+export function Post (path, ...middlewares) {
   return route('post', path, middlewares)
 }
 
-export function put (path, ...middlewares) {
+export function Put (path, ...middlewares) {
   return route('put', path, middlewares)
 }
