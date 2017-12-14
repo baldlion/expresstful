@@ -1,6 +1,6 @@
 {
   "name": "expresstful",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Express RESTful API Framework",
   "main": "lib/expresstful.js",
   "scripts": {

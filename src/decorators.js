@@ -36,7 +36,7 @@ export function All (path, ...middlewares) {
   return route('all', path, middlewares)
 }
 
-export function Del (path, ...middlewares) {
+export function Delete (path, ...middlewares) {
   return route('delete', path, middlewares)
 }
 

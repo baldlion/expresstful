@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { Controller, All, Del, Get, Patch, Post, Put } from './decorators'
+import { Controller, All, Delete, Get, Patch, Post, Put } from './decorators'
 
 function expresstful (controllers) {
   const router = new Router()
@@ -21,7 +21,7 @@ export default expresstful
 export {
   Controller,
   All,
-  Del,
+  Delete,
   Get,
   Patch,
   Post,
